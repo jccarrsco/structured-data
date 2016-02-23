@@ -122,7 +122,7 @@
   (apply clojure.set/union (map :authors books)))
 
 (defn all-author-names [books]
-  (map :name (authors books)))
+  (set (map :name (authors books))))
 
 (defn author->string [author]
   (let [
@@ -136,7 +136,7 @@
     ))
 
 (defn authors->string [authors]
-  (apply str (interpose " and " (map author->string authors))))
+  (apply str (interpose ", " (map author->string authors))))
 
 (defn book->string [book]
   (str (:title book) ", written by " (authors->string (:authors book)) ))
@@ -145,9 +145,10 @@
   (let [
       num-books (count books)
     ]
-    (if (= num-books 0)
-    "No books."
-    (str num-books " books. " (apply str (interpose ", " (map book->string books))))
+    (cond
+    (= num-books 0) "No books."
+    (= num-books 1) (str "1 book. " (book->string (first books)) )
+    :else (str num-books " books. " (apply str (interpose ", " (map book->string books))))
     )))
 
 (defn books-by-author [author books]
