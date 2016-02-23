@@ -1,0 +1,500 @@
+(defn sum-pairs [[x1 y1] [x2 y2]]
+  [(+ x1 x2) (+ y1 y2)])
+(sum-pairs [1 2 3 4] [5 6 7])
+(defn width [rectangle]
+  (let [
+    [[xbottom ybottom] [xtop ytop]]]
+    (- xtop xbottom)
+    ))
+(defn width [rectangle]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+    ]
+    (- xtop xbottom)
+    ))
+(width (rectangle [1 1] [5 1]))
+(defn point [x y]
+  [x y])
+(defn rectangle [bottom-left top-right]
+  [bottom-left top-right])
+(defn width [rectangle]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+    ]
+    (- xtop xbottom)
+    ))
+(width (rectangle [1 1] [5 1]))
+(width (rectangle [1 1] [1 1])) 
+(width (rectangle [3 1] [10 4]))
+(defn height [rectangle]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+    ]
+    (- ytop ybottom)
+    ))
+(height (rectangle [1 1] [5 1]))
+(height (rectangle [1 1] [5 5]))
+(defn square? [rectangle]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+    ]
+    (== (- ytop ybottom) (- xtop xbottom))
+    ))
+(square? (rectangle [1 1] [2 2]))
+(square? (rectangle [1 1] [2 3]))
+(square? (rectangle [3 2] [1 0]))
+(square? (rectangle [3 2] [1 1]))
+(defn area [rectangle]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+    ]
+    (* (- ytop ybottom) (- xtop xbottom))
+    ))
+(area (rectangle [1 1] [5 1]))
+(area (rectangle [0 0] [1 1]))
+(area (rectangle [3 1] [10 4]))
+(defn contains-point? [rectangle point]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+      [xpoint ypoint] point
+      ]
+        (and (< xbottom xpoint xtop) (< ybottom ypoint ytop))
+    ))
+(contains-point? (rectangle [0 0] [2 2])
+                 (point 1 1))    
+(contains-point? (rectangle [0 0] [2 2])
+                 (point -3 1))
+(contains-point? (rectangle [0 0] [2 2])
+                 (point 2 1)) 
+(defn contains-point? [rectangle point]
+  (let [
+    [[xbottom ybottom] [xtop ytop]] rectangle
+      [xpoint ypoint] point
+      ]
+          (and (<= xbottom xpoint xtop) (<= ybottom ypoint ytop))
+    ))
+(contains-point? (rectangle [0 0] [2 2])
+                 (point 2 1)) 
+(contains-point? (rectangle [0 0] [2 2])
+                 (point 1 3)) 
+(contains-point? (rectangle [1 1] [2 2])
+                 (point 1 1))
+(contains-point? (rectangle [1 1] [1 1])
+                 (point 1 1))     
+(defn contains-rectangle? [outer inner]
+  (let [
+    [[xbottom1 ybottom1] [xtop1 ytop1]] outer
+     [xbottom2 ybottom2] [xtop2 ytop2]] inner
+      ]
+          (and (<= xbottom2 xbottom1) (<= ybottom2 ybottom1) (<= xtop2 xtop1) (<= ytop2 ytop1))
+      ))
+(defn contains-rectangle? [outer inner]
+  (let [
+        [[xbottom1 ybottom1] [xtop1 ytop1]] outer
+        [[xbottom2 ybottom2] [xtop2 ytop2]] inner
+      ]
+          (and (<= xbottom2 xbottom1) (<= ybottom2 ybottom1) (<= xtop2 xtop1) (<= ytop2 ytop1))
+        ))
+(contains-rectangle? (rectangle [0 0] [3 3])
+                     (rectangle [1 1] [2 2]))
+(defn contains-rectangle? [outer inner]
+  (let [
+        [[xbottom1 ybottom1] [xtop1 ytop1]] outer
+        [[xbottom2 ybottom2] [xtop2 ytop2]] inner
+      ]
+            (and (>= xbottom2 xbottom1) (>= ybottom2 ybottom1) (>= xtop2 xtop1) (>= ytop2 ytop1))
+          ))
+(contains-rectangle? (rectangle [0 0] [3 3])
+                     (rectangle [1 1] [2 2]))
+(defn contains-rectangle? [outer inner]
+  (let [
+        [[xbottom1 ybottom1] [xtop1 ytop1]] outer
+        [[xbottom2 ybottom2] [xtop2 ytop2]] inner
+      ]
+              (and (>= xbottom2 xbottom1) (<= ybottom2 ybottom1) (>= xtop2 xtop1) (<= ytop2 ytop1))
+          ))
+(contains-rectangle? (rectangle [0 0] [3 3])
+                     (rectangle [1 1] [2 2]))
+(defn contains-rectangle? [outer inner]
+  (let [
+        [[xbottom1 ybottom1] [xtop1 ytop1]] outer
+        [[xbottom2 ybottom2] [xtop2 ytop2]] inner
+      ]
+              (and (>= xbottom2 xbottom1) (>= ybottom2 ybottom1)
+                (>= xtop1 xtop2) (>= ytop1 ytop2))
+          ))
+(contains-rectangle? (rectangle [0 0] [3 3])
+                     (rectangle [1 1] [2 2]))
+(contains-rectangle? (rectangle [0 0] [2 2])
+                     (rectangle [1 1] [3 3]))
+(contains-rectangle? (rectangle [0 0] [1 1])
+                     (rectangle [0 0] [1 1]))
+(contains-rectangle? (rectangle [0 0] [1 1])
+                     (rectangle [1 1] [2 2])) 
+(def m { "J" 3
+         "I" 42
+         "KI" -6}
+m
+(get m "J")
+(def m { "J" 3
+         "I" 42
+         "KI" -6})
+m
+)
+(def m { "J" 3
+         "I" 42
+         "KI" -6})
+m
+(get m "I")
+(get m "J")
+(get m "KI")
+(get m "K")
+(def book {:title "The City and the City"
+           :authors [{:name "China Miéville", :birth-year 1972}]})
+book
+(get book :title)
+(:title book)
+(count [1 2 3 ])
+(count {:name "China Poblana", :birth-year 1972})
+(count ":)")
+(count "):")
+(count "Carlos")
+(def china {:name "China", :birth-year 1972})
+china
+(def octavia {:name "Octavia", :birth-year 1947, :death-year 2006})
+(def friedman {:name "Daniel", :birth-year 1944})
+china
+octavia
+friedman
+(:name china)
+(:name octavia)
+(:name friedman)
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(defn title-length [book]
+    (count (:title book)))
+(title-length cities)  
+(title-length wild-seed)
+(title-length little-schemer)
+(defn author-count [book]
+    (count (:authors book)))
+(author-count cities)
+(author-count wild-seed) 
+(author-count little-schemer)
+(defn multiple-authors? [book]
+    (>= 2 (count (:authors book))))
+(multiple-authors? cities)
+(defn multiple-authors? [book]
+      (>= (count (:authors book)) 2))
+(multiple-authors? cities)
+(multiple-authors? wild-seed)
+(multiple-authors? little-schemer)
+(def m {:a 1})
+m
+(assocc m :b 2)
+(assoc m :b 2)
+m
+(assoc m :a 2)
+(defn add-author [book new-author]
+  (assoc book :authors (conj (:authors book) new-author))
+    )
+(add-author little-schemer {:name "Gerald J. Sussman"})
+(defn alive? [author]
+    (contains author :death-year ))
+(defn alive? [author]
+      (contains? author :death-year ))
+(alive? china)
+(defn alive? [author]
+  (not (contains? author :death-year )))
+(alive? china)
+(alive? octavia)
+(seq [1 2 3])
+(seq {:a 42 :b "foo" :c ["ur" "dad"]})
+(first [3 1 2])
+(first (seq [3 1 2]))
+(cons 0 [1 2 3])
+(defn munge [x]
+  (+ x 42))
+(map munge [1 2 3 4])
+(map (fn [x] (+ x 2)) [1 2 3 4])
+(defn element-lengths [collection]
+  (map (fn [x] (count x)) collection ))
+(element-lengths ["foo" "bar" "" "quux"])
+(element-lengths ["x" [:a :b :c] {:y 42}])
+(defn second-elements [collection]
+  (map (fn [v] (get v 1)) collection))
+(second-elements [[1 2] [2 3] [3 4]]) 
+(second-elements [[1 2 3 4] [1] ["a" "s" "d" "f"]])
+(defn titles [books]
+  (map (fn [book] (:title book)) books))
+(titles [cities])
+(def books [cities, wild-seed, embassytown, little-schemer])
+(titles books)
+(concat [[1 2 3] [4 5 6]])
+(concat [1 2 3] [4 5 6])
+(apply + [1 2 3])
+(+ [1 2 3])
+(defn stars [n]
+  (repeat n "*"))
+(stars 5)
+(defn stars [n]
+  (str (repeat n "*")))
+(stars 5)
+(defn stars [n]
+  (concat (repeat n "*")))
+(stars 5)
+(defn stars [n]
+  (apply concat (repeat n "*")))
+(stars 5)
+(defn stars [n]
+  (apply str (repeat n "*")))
+(stars 5)
+(defn monotonic? [a-seq]
+  (or (apply <= a-seq) (apply >= a-seq)))
+(monotonic? [1 2 3]) 
+(monotonic? [3 2 0 -3]) 
+(monotonic? [1 2 1 0])
+(monotonic? [3 2 2])
+(set [1 2 1 1 1 2 3 2 2])
+#{1 2 3}
+#{1, 2, 3}
+(def nums #{1, 2, 3})
+(contains? nums 2)
+(contains? nums 4)
+(contains? nums 3)
+(disj [1 2 3] 3)
+(disj #{1 2 3} 3)
+(contains? [1 2 3] 3)
+(contains? #{1 2 3} 3)
+(defn toggle [a-set elem]
+  (if (contains? a-set elem)
+    (disj a-set elem)
+    (conj a-set elem)
+    ))
+(toggle #{:a :b :c} :d)
+(toggle #{:a :b :c} :a)
+(defn contains-duplicates? [a-seq]
+  (== (count a-seq)(count (set a-seq))))
+(contains-duplicates? [1 1 2 3 -40])
+(defn contains-duplicates? [a-seq]
+  (not (== (count a-seq)(count (set a-seq)))))
+(contains-duplicates? [1 1 2 3 -40])
+(contains-duplicates? [1 2 3 -40])
+(contains-duplicates? [1 2 3 "a" "a"])
+(def little-schemer {:title "The Little Schemer"
+                     :authors #{friedman, felleisen}})
+(defn old-book->new-book [book]
+  (assoc book :authors (set (:authors book)) ))
+(old-book->new-book {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(old-book->new-book {:title "Wild Seed", :authors [octavia]})
+(old-book->new-book
+  {:awards ["Hugo" "World Fantasy Award" "Arthur C. Clarke Award"
+            "British Science Fiction Award"]
+   :title "The City and the City"
+   :authors [{:birth-year 1972, :name "China Miéville"}]})
+def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors #{china}})
+(def wild-seed {:title "Wild Seed", :authors #{octavia}})
+(def embassytown {:title "Embassytown", :authors #{china}})
+(def little-schemer {:title "The Little Schemer"
+                     :authors #{friedman, felleisen}})
+(def books [cities, wild-seed, embassytown, little-schemer])
+(defn has-author? [book author]
+  (contains? (:authors book) author))
+(has-author? cities china)
+(has-author? cities felleisen) 
+(has-author? little-schemer friedman)
+(has-author? little-schemer octavia)ç
+(has-author? little-schemer octavia)
+(clojure.set/union #{1 2 3} #{4 5 3})
+(defn authors [books]
+  (apply set (map :authors books)))
+(authors [cities, wild-seed]) 
+(defn authors [books]
+  (apply clojure.set/union (map :authors books)))
+(authors [cities, wild-seed]) 
+(authors [cities, wild-seed, embassytown])
+(authors [little-schemer, cities])  
+(defn all-author-names [books]
+  (map :name (authors books)))
+all-author-names books)
+(authors [cities, wild-seed, embassytown])
+(def books [cities, wild-seed, embassytown, little-schemer])
+(all-author-names books)
+(all-author-names [cities, wild-seed])
+(all-author-names []) ;=> #{}
+(defn author->string [author]
+  ((str (:name author) "(" (:birth-year author) "-" (:death-year author) ")" )))
+(author->string felleisen) 
+felleisen
+(author->string friedman)
+(str 1 "h")
+(defn author->string [author]
+  (str (:name author) "(" (:birth-year author) "-" (:death-year author) ")" ))
+(author->string friedman)
+(defn author->string [author]
+  (str (:name author) "(" (:birth-year author) " - " (:death-year author) ")" ))
+(author->string friedman)
+(defn author->string [author]
+  (str (:name author) " (" (:birth-year author) " - " (:death-year author) ")" ))
+(author->string friedman)
+(author->string felleisen)
+(author->string octavia)
+(defn author->string [author]
+  (let [
+    name (:name author)
+    birth (:birth-year author)
+    death (:death-year author)]
+    (if (contains? author :death-year)
+      (str name " (" birth " - " death ")" )
+      (str name)
+      )
+    ))
+(author->string octavia)
+(author->string friedman)
+(defn author->string [author]
+  (let [
+    name (:name author)
+    birth (:birth-year author)
+    death (:death-year author)]
+    (if (contains? author :birth-year)
+      (str name " (" birth " - " death ")" )
+      (str name)
+      )
+    ))
+(author->string friedman)
+(author->string felleisen)
+(author->string octavia)
+(interpose ":" [1 2 3])
+(defn authors->string [authors]
+  (apply str (interpose " and " authors)))
+(authors->string (:authors little-schemer))
+(:authors little-schemer)
+(authors->string (:authors little-schemer))
+(defn authors->string [authors]
+  (apply str (interpose " and " (map author->string authors))))
+(authors->string (:authors little-schemer))
+(authors->string #{octavia}) 
+(authors->string #{}) 
+(authors->string #{octavia, friedman})
+(defn book->string [book]
+  (str (:title book) (authors->string (:authors book)) ))
+(defn book->string [book]
+  (str (:title book) ", written by " (authors->string (:authors book)) )
+()
+)
+(defn book->string [book]
+  (str (:title book) ", written by " (authors->string (:authors book)) ))
+(book->string wild-seed)
+(book->string little-schemer)
+(empty? books)
+(defn books->string [books]
+  (let [
+      num-books (count books)
+    ]
+    (if (= num-books 0)
+    "No books."
+    (str num-books "books." (map book->string books))
+    )))
+(books->string [])
+(books->string [cities])
+(books->string [little-schemer, cities, wild-seed])
+(defn book->string [book]
+  (str (:title book) ", written by " (authors->string (:authors book)) ))
+(defn books->string [books]
+  (let [
+      num-books (count books)
+    ]
+    (if (= num-books 0)
+    "No books."
+    (str num-books " books." (map book->string books))
+    )))
+(books->string [little-schemer, cities, wild-seed])
+(defn books->string [books]
+  (let [
+      num-books (count books)
+    ]
+    (if (= num-books 0)
+    "No books."
+    (str num-books " books." (apply concat (map book->string books)))
+    )))
+(books->string [little-schemer, cities, wild-seed])
+(defn books->string [books]
+  (let [
+      num-books (count books)
+    ]
+    (if (= num-books 0)
+    "No books."
+    (str num-books " books." (apply str (interpose ", " (map book->string books))))
+    )))
+(books->string [little-schemer, cities, wild-seed])
+(filter pos? [-4 6  -2 7 -8 3])
+(defn books-by-author [author books]
+  (filter  (fn [book] (contains? (:authors book) author) )    books))
+(books-by-author china books) 
+(defn books-by-author [author books]
+  (:title (filter  (fn [book] (contains? (:authors book) author) )    books)))
+(books-by-author china books) 
+(defn books-by-author [author books]
+   (filter  (fn [book] (contains? (:authors book) author) )    books))
+(books-by-author china books) 
+(defn books-by-author [author books]
+   (map :title (filter  (fn [book] (contains? (:authors book) author) )  books)) )
+(books-by-author china books) 
+(books-by-author octavia books) 
+(def authors #{china, felleisen, octavia, friedman})
+(defn author-by-name [name authors]
+  (filter (fn [author] (= name (:name author)) ) authors))
+(author-by-name "Octavia E. Butler" authors)
+(author-by-name "Octavia E. Butl" authors)
+(author-by-name "Octavia E. Butler" #{felleisen, friedman})
+(author-by-name "China Miéville" authors) 
+(author-by-name "Goerge R. R. Martin" authors)
+(defn living-authors [authors]
+  (filter alive? authors))
+(living-authors authors)
+(living-authors #{octavia})
+(living-authors #{china, felleisen})
+(def jrrtolkien {:name "J. R. R. Tolkien" :birth-year 1892 :death-year 1973})
+(def christopher {:name "Christopher Tolkien" :birth-year 1924})
+(def kay {:name "Guy Gavriel Kay" :birth-year 1954})
+(def silmarillion {:title "Silmarillion"
+                   :authors #{jrrtolkien, christopher, kay}})
+(def dick {:name "Philip K. Dick", :birth-year 1928, :death-year 1982})
+(def zelazny {:name "Roger Zelazny", :birth-year 1937, :death-year 1995})
+(def deus-irae {:title "Deus Irae", :authors #{dick, zelazny}})
+(defn has-a-living-author? [book]
+  (not (empty? (filter alive? (:authors book)))) )
+(has-a-living-author? wild-seed)
+(has-a-living-author? silmarillion)
+(has-a-living-author? little-schemer) ;=> true
+(has-a-living-author? cities)         ;=> true
+(has-a-living-author? deus-irae) 
+(books-by-living-authors books)
+(defn books-by-living-authors [books]
+  (filter has-a-living-author? books))
+(books-by-living-authors books)
+(books-by-living-authors (concat books [deus-irae, silmarillion]))
+(books->string (books-by-living-authors (concat books [deus-irae, silmarillion])))
+(filter ?pos [1 -2 3 -6])
+(filter pos? [1 -2 3 -6])
+(filterv pos? [1 -2 3 -6])
+(get (filter pos? [1 -2 3 -6]) 1)
+(get (filter pos? [1 -2 3 -6]) 3)
+(get (filter pos? [1 -2 3 -6]) 1)
+(get (filterv pos? [1 -2 3 -6]) 1)
